@@ -4,7 +4,7 @@
 
 // +build !appengine
 
-package bchutil
+package bsvutil
 
 import (
 	"net"

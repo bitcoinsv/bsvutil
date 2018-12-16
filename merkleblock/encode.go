@@ -1,16 +1,16 @@
 // Copyright (c) 2013-2016 The btcsuite developers
-// Copyright (c) 2018 The gcash developers
+// Copyright (c) 2018 The bitcoinsv developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
 package merkleblock
 
 import (
-	"github.com/gcash/bchd/blockchain"
-	"github.com/gcash/bchd/chaincfg/chainhash"
-	"github.com/gcash/bchd/wire"
-	"github.com/gcash/bchutil"
-	"github.com/gcash/bchutil/bloom"
+	"github.com/bitcoinsv/bsvd/blockchain"
+	"github.com/bitcoinsv/bsvd/chaincfg/chainhash"
+	"github.com/bitcoinsv/bsvd/wire"
+	"github.com/bitcoinsv/bsvutil"
+	"github.com/bitcoinsv/bsvutil/bloom"
 )
 
 // MerkleBlock is used to house intermediate information needed to generate a
@@ -92,7 +92,7 @@ func TxInSet(tx *chainhash.Hash, set []*chainhash.Hash) bool {
 
 // NewMerkleBlockWithFilter returns a new *wire.MsgMerkleBlock and an array of the matched
 // transaction index numbers based on the passed block and bloom filter.
-func NewMerkleBlockWithFilter(block *bchutil.Block, filter *bloom.Filter) (*wire.MsgMerkleBlock, []uint32) {
+func NewMerkleBlockWithFilter(block *bsvutil.Block, filter *bloom.Filter) (*wire.MsgMerkleBlock, []uint32) {
 
 	numTx := uint32(len(block.Transactions()))
 	mBlock := MerkleBlock{
@@ -118,7 +118,7 @@ func NewMerkleBlockWithFilter(block *bchutil.Block, filter *bloom.Filter) (*wire
 
 // NewMerkleBlockWithTxnSet returns a new *wire.MsgMerkleBlock containing a
 // partial merkle tree built using the list of transactions provided
-func NewMerkleBlockWithTxnSet(block *bchutil.Block, txnSet []*chainhash.Hash) (*wire.MsgMerkleBlock, []uint32) {
+func NewMerkleBlockWithTxnSet(block *bsvutil.Block, txnSet []*chainhash.Hash) (*wire.MsgMerkleBlock, []uint32) {
 
 	numTx := uint32(len(block.Transactions()))
 	mBlock := MerkleBlock{
@@ -145,7 +145,7 @@ func NewMerkleBlockWithTxnSet(block *bchutil.Block, txnSet []*chainhash.Hash) (*
 
 // calcBlock calculates the merkleBlock when created from either a TxnSet or
 // by a bloom.Filter
-func (m *MerkleBlock) calcBlock(block *bchutil.Block) *wire.MsgMerkleBlock {
+func (m *MerkleBlock) calcBlock(block *bsvutil.Block) *wire.MsgMerkleBlock {
 
 	// Calculate the number of merkle branches (height) in the tree.
 	height := uint32(0)

@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2016 The btcsuite developers
-// Copyright (c) 2018 The gcash developers
+// Copyright (c) 2018 The bitcoinsv developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -10,11 +10,11 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/gcash/bchd/chaincfg/chainhash"
-	"github.com/gcash/bchd/wire"
-	"github.com/gcash/bchutil"
-	"github.com/gcash/bchutil/bloom"
-	"github.com/gcash/bchutil/merkleblock"
+	"github.com/bitcoinsv/bsvd/chaincfg/chainhash"
+	"github.com/bitcoinsv/bsvd/wire"
+	"github.com/bitcoinsv/bsvutil"
+	"github.com/bitcoinsv/bsvutil/bloom"
+	"github.com/bitcoinsv/bsvutil/merkleblock"
 )
 
 // TestMerkleBlock3 tests merkleblock encoding using bloom filter. This test
@@ -34,7 +34,7 @@ func TestNewMerkleBlockWithFilter(t *testing.T) {
 		t.Errorf("TestMerkleBlock3 DecodeString failed: %v", err)
 		return
 	}
-	blk, err := bchutil.NewBlockFromBytes(blockBytes)
+	blk, err := bsvutil.NewBlockFromBytes(blockBytes)
 	if err != nil {
 		t.Errorf("TestMerkleBlock3 NewBlockFromBytes failed: %v", err)
 		return
@@ -65,9 +65,9 @@ func TestNewMerkleBlockWithFilter(t *testing.T) {
 	}
 
 	got := bytes.NewBuffer(nil)
-	err = mBlock.BchEncode(got, wire.ProtocolVersion, wire.LatestEncoding)
+	err = mBlock.BsvEncode(got, wire.ProtocolVersion, wire.LatestEncoding)
 	if err != nil {
-		t.Errorf("TestMerkleBlock3 BchEncode failed: %v", err)
+		t.Errorf("TestMerkleBlock3 BsvEncode failed: %v", err)
 		return
 	}
 
@@ -141,7 +141,7 @@ func TestValidNewMerkleBlockWithTxnSet(t *testing.T) {
 				return
 			}
 
-			blk, err := bchutil.NewBlockFromBytes(blockBytes)
+			blk, err := bsvutil.NewBlockFromBytes(blockBytes)
 
 			if err != nil {
 				t.Errorf("NewBlockFromBytes failed: %v", err)
@@ -159,10 +159,10 @@ func TestValidNewMerkleBlockWithTxnSet(t *testing.T) {
 
 			// encode wire message
 			got := bytes.NewBuffer(nil)
-			err = mBlock.BchEncode(got, wire.ProtocolVersion, wire.LatestEncoding)
+			err = mBlock.BsvEncode(got, wire.ProtocolVersion, wire.LatestEncoding)
 
 			if err != nil {
-				t.Errorf("mBlock BchEncode failed: %v", err)
+				t.Errorf("mBlock BsvEncode failed: %v", err)
 				return
 			}
 
@@ -221,7 +221,7 @@ func TestInvalidNewMerkleBlockWithTxnSet(t *testing.T) {
 				return
 			}
 
-			blk, err := bchutil.NewBlockFromBytes(blockBytes)
+			blk, err := bsvutil.NewBlockFromBytes(blockBytes)
 
 			if err != nil {
 				t.Errorf("NewBlockFromBytes failed: %v", err)

@@ -16,7 +16,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gcash/bchd/chaincfg"
+	"github.com/bitcoinsv/bsvd/chaincfg"
 )
 
 // TestBIP0032Vectors tests the vectors provided by [BIP32] to ensure the
@@ -49,7 +49,7 @@ func TestBIP0032Vectors(t *testing.T) {
 			name:     "test vector 1 chain m/0H",
 			master:   testVec1MasterHex,
 			path:     []uint32{hkStart},
-			wantPub:  "xpub68Gmy5EdvgibQVfPdqkBBCHxA5htiqg55crXYuXoQRKfDBFA1WEjWgP6LHhwBZeNK1VTsfTFUHCdrfp1bgwQ9xv5ski8PX9rL2dZXvgGDnw",
+			wantPub:  "xpub68Gmy5EdvgibQVfPdqkBBSVxA5htiqg55crXYuXoQRKfDBFA1WEjWgP6LHhwBZeNK1VTsfTFUHCdrfp1bgwQ9xv5ski8PX9rL2dZXvgGDnw",
 			wantPriv: "xprv9uHRZZhk6KAJC1avXpDAp4MDc3sQKNxDiPvvkX8Br5ngLNv1TxvUxt4cV1rGL5hj6KCesnDYUhd7oWgT11eZG7XnxHrnYeSvkzY7d2bhkJ7",
 			net:      &chaincfg.MainNetParams,
 		},

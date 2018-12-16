@@ -7,7 +7,7 @@ package base58_test
 import (
 	"testing"
 
-	"github.com/gcash/bchutil/base58"
+	"github.com/bitcoinsv/bsvutil/base58"
 )
 
 var checkEncodingStringTests = []struct {

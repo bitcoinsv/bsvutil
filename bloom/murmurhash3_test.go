@@ -7,7 +7,7 @@ package bloom_test
 import (
 	"testing"
 
-	"github.com/gcash/bchutil/bloom"
+	"github.com/bitcoinsv/bsvutil/bloom"
 )
 
 // TestMurmurHash3 ensure the MurmurHash3 function produces the correct hash

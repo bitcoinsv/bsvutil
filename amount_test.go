@@ -2,13 +2,13 @@
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-package bchutil_test
+package bsvutil_test
 
 import (
 	"math"
 	"testing"
 
-	. "github.com/gcash/bchutil"
+	. "github.com/bitcoinsv/bsvutil"
 )
 
 func TestAmountCreation(t *testing.T) {
@@ -119,40 +119,40 @@ func TestAmountUnitConversions(t *testing.T) {
 		s         string
 	}{
 		{
-			name:      "MBCH",
+			name:      "MBSV",
 			amount:    MaxSatoshi,
-			unit:      AmountMegaBCH,
+			unit:      AmountMegaBSV,
 			converted: 21,
-			s:         "21 MBCH",
+			s:         "21 MBSV",
 		},
 		{
-			name:      "kBCH",
+			name:      "kBSV",
 			amount:    44433322211100,
-			unit:      AmountKiloBCH,
+			unit:      AmountKiloBSV,
 			converted: 444.33322211100,
-			s:         "444.333222111 kBCH",
+			s:         "444.333222111 kBSV",
 		},
 		{
-			name:      "BCH",
+			name:      "BSV",
 			amount:    44433322211100,
-			unit:      AmountBCH,
+			unit:      AmountBSV,
 			converted: 444333.22211100,
-			s:         "444333.222111 BCH",
+			s:         "444333.222111 BSV",
 		},
 		{
-			name:      "mBCH",
+			name:      "mBSV",
 			amount:    44433322211100,
-			unit:      AmountMilliBCH,
+			unit:      AmountMilliBSV,
 			converted: 444333222.11100,
-			s:         "444333222.111 mBCH",
+			s:         "444333222.111 mBSV",
 		},
 		{
 
-			name:      "μBCH",
+			name:      "μBSV",
 			amount:    44433322211100,
-			unit:      AmountMicroBCH,
+			unit:      AmountMicroBSV,
 			converted: 444333222111.00,
-			s:         "444333222111 μBCH",
+			s:         "444333222111 μBSV",
 		},
 		{
 
@@ -168,7 +168,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountUnit(-1),
 			converted: 4443332.2211100,
-			s:         "4443332.22111 1e-1 BCH",
+			s:         "4443332.22111 1e-1 BSV",
 		},
 	}
 
@@ -185,15 +185,15 @@ func TestAmountUnitConversions(t *testing.T) {
 			continue
 		}
 
-		// Verify that Amount.ToBCH works as advertised.
-		f1 := test.amount.ToUnit(AmountBCH)
-		f2 := test.amount.ToBCH()
+		// Verify that Amount.ToBSV works as advertised.
+		f1 := test.amount.ToUnit(AmountBSV)
+		f2 := test.amount.ToBSV()
 		if f1 != f2 {
-			t.Errorf("%v: ToBCH does not match ToUnit(AmountBCH): %v != %v", test.name, f1, f2)
+			t.Errorf("%v: ToBSV does not match ToUnit(AmountBSV): %v != %v", test.name, f1, f2)
 		}
 
 		// Verify that Amount.String works as advertised.
-		s1 := test.amount.Format(AmountBCH)
+		s1 := test.amount.Format(AmountBSV)
 		s2 := test.amount.String()
 		if s1 != s2 {
 			t.Errorf("%v: String does not match Format(AmountBitcoin): %v != %v", test.name, s1, s2)
@@ -209,52 +209,52 @@ func TestAmountMulF64(t *testing.T) {
 		res  Amount
 	}{
 		{
-			name: "Multiply 0.1 BCH by 2",
-			amt:  100e5, // 0.1 BCH
+			name: "Multiply 0.1 BSV by 2",
+			amt:  100e5, // 0.1 BSV
 			mul:  2,
-			res:  200e5, // 0.2 BCH
+			res:  200e5, // 0.2 BSV
 		},
 		{
-			name: "Multiply 0.2 BCH by 0.02",
-			amt:  200e5, // 0.2 BCH
+			name: "Multiply 0.2 BSV by 0.02",
+			amt:  200e5, // 0.2 BSV
 			mul:  1.02,
-			res:  204e5, // 0.204 BCH
+			res:  204e5, // 0.204 BSV
 		},
 		{
-			name: "Multiply 0.1 BCH by -2",
-			amt:  100e5, // 0.1 BCH
+			name: "Multiply 0.1 BSV by -2",
+			amt:  100e5, // 0.1 BSV
 			mul:  -2,
-			res:  -200e5, // -0.2 BCH
+			res:  -200e5, // -0.2 BSV
 		},
 		{
-			name: "Multiply 0.2 BCH by -0.02",
-			amt:  200e5, // 0.2 BCH
+			name: "Multiply 0.2 BSV by -0.02",
+			amt:  200e5, // 0.2 BSV
 			mul:  -1.02,
-			res:  -204e5, // -0.204 BCH
+			res:  -204e5, // -0.204 BSV
 		},
 		{
-			name: "Multiply -0.1 BCH by 2",
-			amt:  -100e5, // -0.1 BCH
+			name: "Multiply -0.1 BSV by 2",
+			amt:  -100e5, // -0.1 BSV
 			mul:  2,
-			res:  -200e5, // -0.2 BCH
+			res:  -200e5, // -0.2 BSV
 		},
 		{
-			name: "Multiply -0.2 BCH by 0.02",
-			amt:  -200e5, // -0.2 BCH
+			name: "Multiply -0.2 BSV by 0.02",
+			amt:  -200e5, // -0.2 BSV
 			mul:  1.02,
-			res:  -204e5, // -0.204 BCH
+			res:  -204e5, // -0.204 BSV
 		},
 		{
-			name: "Multiply -0.1 BCH by -2",
-			amt:  -100e5, // -0.1 BCH
+			name: "Multiply -0.1 BSV by -2",
+			amt:  -100e5, // -0.1 BSV
 			mul:  -2,
-			res:  200e5, // 0.2 BCH
+			res:  200e5, // 0.2 BSV
 		},
 		{
-			name: "Multiply -0.2 BCH by -0.02",
-			amt:  -200e5, // -0.2 BCH
+			name: "Multiply -0.2 BSV by -0.02",
+			amt:  -200e5, // -0.2 BSV
 			mul:  -1.02,
-			res:  204e5, // 0.204 BCH
+			res:  204e5, // 0.204 BSV
 		},
 		{
 			name: "Round down",
@@ -270,9 +270,9 @@ func TestAmountMulF64(t *testing.T) {
 		},
 		{
 			name: "Multiply by 0.",
-			amt:  1e8, // 1 BCH
+			amt:  1e8, // 1 BSV
 			mul:  0,
-			res:  0, // 0 BCH
+			res:  0, // 0 BSV
 		},
 		{
 			name: "Multiply 1 by 0.5.",

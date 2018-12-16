@@ -1,4 +1,4 @@
-// Copyright (c) 2018 The gcash developers
+// Copyright (c) 2018 The bitcoinsv developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -10,9 +10,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gcash/bchd/chaincfg/chainhash"
-	"github.com/gcash/bchd/wire"
-	"github.com/gcash/bchutil/merkleblock"
+	"github.com/bitcoinsv/bsvd/chaincfg/chainhash"
+	"github.com/bitcoinsv/bsvd/wire"
+	"github.com/bitcoinsv/bsvutil/merkleblock"
 )
 
 // TestNewMerkleBlockFromMsg tests decoding of a partial merkle tree from
@@ -89,10 +89,10 @@ func TestNewMerkleBlockFromMsg(t *testing.T) {
 
 			rbuf := bytes.NewReader(dec)
 
-			err = msg.BchDecode(rbuf, wire.ProtocolVersion, wire.BaseEncoding)
+			err = msg.BsvDecode(rbuf, wire.ProtocolVersion, wire.BaseEncoding)
 
 			if err != nil {
-				t.Errorf("BchDecode error: %v\n", err)
+				t.Errorf("BsvDecode error: %v\n", err)
 				return
 			}
 

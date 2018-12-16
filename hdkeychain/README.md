@@ -1,9 +1,9 @@
 hdkeychain
 ==========
 
-[![Build Status](https://travis-ci.org/gcash/bchutil.svg?branch=master)](https://travis-ci.org/gcash/bchutil)
+[![Build Status](https://travis-ci.org/bitcoinsv/bsvutil.svg?branch=master)](https://travis-ci.org/bitcoinsv/bsvutil)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/gcash/bchutil/hdkeychain)
+[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/bitcoinsv/bsvutil/hdkeychain)
 
 Package hdkeychain provides an API for bitcoin hierarchical deterministic
 extended keys (BIP0032).
@@ -24,10 +24,10 @@ report.
   keys
 - Support for custom networks by registering them with chaincfg
 - Obtaining the underlying EC pubkeys, EC privkeys, and associated bitcoin
-  addresses ties in seamlessly with existing bchec and bchutil types which
+  addresses ties in seamlessly with existing bsvec and bsvutil types which
   provide powerful tools for working with them to do things like sign
   transations and generate payment scripts
-- Uses the bchec package which is highly optimized for secp256k1
+- Uses the bsvec package which is highly optimized for secp256k1
 - Code examples including:
   - Generating a cryptographically secure random seed and deriving a
     master node from it
@@ -39,18 +39,18 @@ report.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/gcash/bchutil/hdkeychain
+$ go get -u github.com/bitcoinsv/bsvutil/hdkeychain
 ```
 
 ## Examples
 
-* [NewMaster Example](http://godoc.org/github.com/gcash/bchutil/hdkeychain#example-NewMaster)  
+* [NewMaster Example](http://godoc.org/github.com/bitcoinsv/bsvutil/hdkeychain#example-NewMaster)  
   Demonstrates how to generate a cryptographically random seed then use it to
   create a new master node (extended key).
-* [Default Wallet Layout Example](http://godoc.org/github.com/gcash/bchutil/hdkeychain#example-package--DefaultWalletLayout)  
+* [Default Wallet Layout Example](http://godoc.org/github.com/bitcoinsv/bsvutil/hdkeychain#example-package--DefaultWalletLayout)  
   Demonstrates the default hierarchical deterministic wallet layout as described
   in BIP0032.
-* [Audits Use Case Example](http://godoc.org/github.com/gcash/bchutil/hdkeychain#example-package--Audits)  
+* [Audits Use Case Example](http://godoc.org/github.com/bitcoinsv/bsvutil/hdkeychain#example-package--Audits)  
   Demonstrates the audits use case in BIP0032.
 
 ## License

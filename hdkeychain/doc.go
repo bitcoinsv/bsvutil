@@ -71,7 +71,7 @@ Serializing and Deserializing Extended Keys
 Extended keys are serialized and deserialized with the String and
 NewKeyFromString functions.  The serialized key is a Base58-encoded string which
 looks like the following:
-	public key:   xpub68Gmy5EdvgibQVfPdqkBBCHxA5htiqg55crXYuXoQRKfDBFA1WEjWgP6LHhwBZeNK1VTsfTFUHCdrfp1bgwQ9xv5ski8PX9rL2dZXvgGDnw
+	public key:   xpub68Gmy5EdvgibQVfPdqkBBSVxA5htiqg55crXYuXoQRKfDBFA1WEjWgP6LHhwBZeNK1VTsfTFUHCdrfp1bgwQ9xv5ski8PX9rL2dZXvgGDnw
 	private key:  xprv9uHRZZhk6KAJC1avXpDAp4MDc3sQKNxDiPvvkX8Br5ngLNv1TxvUxt4cV1rGL5hj6KCesnDYUhd7oWgT11eZG7XnxHrnYeSvkzY7d2bhkJ7
 
 Network

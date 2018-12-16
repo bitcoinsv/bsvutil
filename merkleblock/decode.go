@@ -1,14 +1,14 @@
 // Copyright (c) 2013-2016 The btcsuite developers
-// Copyright (c) 2018 The gcash developers
+// Copyright (c) 2018 The bitcoinsv developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
 package merkleblock
 
 import (
-	"github.com/gcash/bchd/blockchain"
-	"github.com/gcash/bchd/chaincfg/chainhash"
-	"github.com/gcash/bchd/wire"
+	"github.com/bitcoinsv/bsvd/blockchain"
+	"github.com/bitcoinsv/bsvd/chaincfg/chainhash"
+	"github.com/bitcoinsv/bsvd/wire"
 )
 
 // MaxTxnCount defines the maximum number of transactions we will process before

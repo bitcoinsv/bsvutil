@@ -2,15 +2,15 @@
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-package bchutil
+package bsvutil
 
 import (
 	"encoding/hex"
 	"errors"
 
-	"github.com/gcash/bchd/bchec"
-	"github.com/gcash/bchd/chaincfg"
-	"github.com/gcash/bchutil/base58"
+	"github.com/bitcoinsv/bsvd/bsvec"
+	"github.com/bitcoinsv/bsvd/chaincfg"
+	"github.com/bitcoinsv/bsvutil/base58"
 	"golang.org/x/crypto/ripemd160"
 )
 
@@ -437,7 +437,7 @@ const (
 // AddressPubKey is an Address for a pay-to-pubkey transaction.
 type AddressPubKey struct {
 	pubKeyFormat PubKeyFormat
-	pubKey       *bchec.PublicKey
+	pubKey       *bsvec.PublicKey
 	pubKeyHashID byte
 }
 
@@ -445,13 +445,13 @@ type AddressPubKey struct {
 // address.  The serializedPubKey parameter must be a valid pubkey and can be
 // uncompressed, compressed, or hybrid.
 func NewAddressPubKey(serializedPubKey []byte, net *chaincfg.Params) (*AddressPubKey, error) {
-	pubKey, err := bchec.ParsePubKey(serializedPubKey, bchec.S256())
+	pubKey, err := bsvec.ParsePubKey(serializedPubKey, bsvec.S256())
 	if err != nil {
 		return nil, err
 	}
 
 	// Set the format of the pubkey.  This probably should be returned
-	// from bchec, but do it here to avoid API churn.  We already know the
+	// from bsvec, but do it here to avoid API churn.  We already know the
 	// pubkey is valid since it parsed above, so it's safe to simply examine
 	// the leading byte to get the format.
 	pkFormat := PKFUncompressed
@@ -543,7 +543,7 @@ func (a *AddressPubKey) AddressPubKeyHash() *AddressPubKeyHash {
 }
 
 // PubKey returns the underlying public key for the address.
-func (a *AddressPubKey) PubKey() *bchec.PublicKey {
+func (a *AddressPubKey) PubKey() *bsvec.PublicKey {
 	return a.pubKey
 }
 
@@ -638,9 +638,9 @@ func polyMod(v []byte) uint64 {
 	 * The output is a 40-bit integer whose 5-bit groups are the coefficients of
 	 * the remainder of v(x) mod g(x), where g(x) is the cashaddr generator, x^8
 	 * + {19}*x^7 + {3}*x^6 + {25}*x^5 + {11}*x^4 + {25}*x^3 + {3}*x^2 + {19}*x
-	 * + {1}. g(x) is chosen in such a way that the resulting code is a BCH
+	 * + {1}. g(x) is chosen in such a way that the resulting code is a BSV
 	 * code, guaranteeing detection of up to 4 errors within a window of 1025
-	 * characters. Among the various possible BCH codes, one was selected to in
+	 * characters. Among the various possible BSV codes, one was selected to in
 	 * fact guarantee detection of up to 5 errors within a window of 160
 	 * characters and 6 erros within a window of 126 characters. In addition,
 	 * the code guarantee the detection of a burst of up to 8 errors.
